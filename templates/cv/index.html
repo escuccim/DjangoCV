@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My CV" %}{% endblock %}
+
+{% block body %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>{% trans "Professional Experience" %}</h2>
+        </div>
+        <div class="panel-body">
+            {% for job in jobs %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{ job.position }} - {{ job.company }}</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <b>{{ job.location }}</b>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <b>{{ job.start_date|date:"m.Y" }} - {% if job.end_date %}{{ job.end_date|date:"m.Y" }}{% else %}Present{% endif %}</b>
+                    </div>
+                    <div class="col-md-12">
+                        <p>{{ job.description|safe }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+         <div class="panel-heading">
+            <h2>{% trans "Education" %}</h2>
+        </div>
+        <div class="panel-body">
+            {% for education in educations %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{ education.school }} - {{ education.degree }}</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <b>{{ education.location }}</b>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <b>{{ education.start_date|date:"m.Y" }} - {% if education.end_date %}{{ education.end_date|date:"m.Y" }}{% else %}Present{% endif %}</b>
+                    </div>
+                    <div class="col-md-12">
+                        {% if education.major %}
+                            <p>Major: {{ education.major }}</p>
+                        {% endif %}
+                        <p>{{ job.description|safe }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+         <div class="panel-heading">
+            <h3>{% trans "Computer Skills" %}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {% trans "Programming Languages" %}
+                        </h3>
+                    </div>
+                    <div class="panel-body" id="collapse-program">
+                        <p><b>{% trans "Core Skills" %}</b> : PHP, Python, HTML, CSS, Javascript, jQuery, SQL, Bootstrap CSS; JSON; Web services, API, REST/SOAP
+                        <p><b>{% trans "Frameworks" %}</b> : Django, Laravel, Symfony, Zend Framework
+                        <p><b>{% trans "Experience with" %}</b> : ColdFusion, Perl, Ruby, Postgres, VueJS
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            {% trans "Platforms and Operating Systems" %}
+                        </h4>
+                    </div>
+                    <div class="panel-body" id="collapse-platform">
+                        <p><b>OS</b>: Windows, Linux, Unix, Ubuntu, MacOS
+                        <p><b>{% trans "Web Servers" %}</b> : Apache, Nginx
+                        <p><b>{% trans "Databases" %}</b> : MySQL; Redis; SQLLite; MS SQL Server
+                        <p><b>{% trans "Software" %}</b> : Composer, Eclipse, PHPStorm, PyCharm, Photoshop, Illustrator, Microsoft Office, Microsoft Project
+                        <p><b>{% trans "Version Control" %}</b> : Git, Subversion, Visual Sourcesafe
+                        <p><b>{% trans "Testing" %}</b> : PHPUnit
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+         <div class="panel-heading">
+            <h3>{% trans "Languages" %}</h3>
+        </div>
+        <div class="panel-body">
+            <p><b>{% trans "English" %}</b> - {% trans "native language" %}
+            <p><b>{% trans "French" %}</b> - {% trans "Bilingual, C1-C2" %}</p>
+        </div>
+    </div>
+{% endblock %}
