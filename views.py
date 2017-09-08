@@ -9,7 +9,7 @@ from languages.models import Language
 
 # Create your views here.
 def CV(request):
-    language = Language.objects.get(code=translation.get_language())
+    language=translation.get_language()
     jobs = Job.objects.filter(language=language)
     educations = Education.objects.filter(language=language)
 
