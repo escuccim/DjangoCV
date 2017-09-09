@@ -5,7 +5,6 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import Job, Education
 from django.utils import translation
-from languages.models import Language
 
 # Create your views here.
 def CV(request):
