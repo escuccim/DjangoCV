@@ -14,7 +14,7 @@
 
 				<h4>{% trans "About Eric" %}</h4>
 				{% blocktrans %}About Eric text{% endblocktrans %}
-				<p>{% blocktrans %}My <a href="/en/about/cv/">CV is available here.</a>{% endblocktrans %}
+				<p><a href="{% url 'cv:cv' %}">{% blocktrans %}My CV is available here.{% endblocktrans %}</a>
 				</p>
 				<hr>
 				<h4>{% trans "About this site" %}</h4>
