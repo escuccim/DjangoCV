@@ -9,8 +9,8 @@ from django.utils import translation
 # Create your views here.
 def CV(request):
     language=translation.get_language()
-    jobs = Job.objects.filter(language=language)
-    educations = Education.objects.filter(language=language)
+    jobs = Job.objects.filter(lang=language)
+    educations = Education.objects.filter(lang=language)
 
     return render(request, 'cv/index.html', { 'jobs' : jobs, 'educations' : educations})
 

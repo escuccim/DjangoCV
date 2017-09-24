@@ -18,10 +18,13 @@
                         <b>{{ job.location }}</b>
                     </div>
                     <div class="col-md-6 text-right">
-                        <b>{{ job.start_date|date:"m.Y" }} - {% if job.end_date %}{{ job.end_date|date:"m.Y" }}{% else %}Present{% endif %}</b>
+                        <b>{{ job.startdate|date:"m.Y" }} - {% if job.enddate %}{{ job.enddate|date:"m.Y" }}{% else %}Present{% endif %}</b>
                     </div>
                     <div class="col-md-12">
                         <p>{{ job.description|safe }}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <hr>
                     </div>
                 </div>
             {% endfor %}

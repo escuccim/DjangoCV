@@ -7,11 +7,11 @@ from django.conf import settings
 class Job(models.Model):
     order = models.IntegerField(default=0)
     company = models.CharField(max_length=128)
-    language = models.CharField(max_length=5, choices=settings.LANGUAGES)
+    lang = models.CharField(max_length=5, choices=settings.LANGUAGES)
     location = models.CharField(max_length=128, null=True,blank=True)
     position = models.CharField(max_length=128)
-    start_date = models.DateField()
-    end_date = models.DateField(blank=True, null=True)
+    startdate = models.DateField()
+    enddate = models.DateField(blank=True, null=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -20,6 +20,7 @@ class Job(models.Model):
         return self.company + ' - ' + self.position
 
     class Meta:
+        db_table = 'jobs'
         ordering = ['order']
 
 
@@ -30,7 +31,7 @@ class Education(models.Model):
     location = models.CharField(max_length=128)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
-    language = models.CharField(max_length=5, choices=settings.LANGUAGES)
+    lang = models.CharField(max_length=5, choices=settings.LANGUAGES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -38,4 +39,5 @@ class Education(models.Model):
         return self.school
 
     class Meta:
+        db_table = 'education'
         ordering = ['-end_date']
